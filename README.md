@@ -9,3 +9,14 @@ This template should help get you started developing with Vue 3 and Typescript i
 ## Type Support For `.vue` Imports in TS
 
 Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+
+## Additional Libraries
+
+- [@urql/vue](https://https://formidable.com/open-source/urql/docs/) GraphQL Client
+- [@graphql-codegen](https://https://www.graphql-code-generator.com/) used to generate Types for the graphql endpoint. It also uses several plugins:
+  [@graphql-codegen/typescript](https://www.graphql-code-generator.com/plugins)
+  & [@graphql-codegen/typescript-operations](https://www.graphql-code-generator.com/plugins)
+
+# Application Overview
+
+The application is the ToDo application use by Hasura as an example Vue app. It is adapted to use Urql, and Vue 3.2 features.
