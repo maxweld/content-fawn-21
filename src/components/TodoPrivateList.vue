@@ -1,37 +1,33 @@
 <script setup lang="ts">
 	import TodoItem from './TodoItem.vue'
 	import TodoFilters from './TodoFilters.vue'
-	import { useQuery } from '@urql/vue'
-
-	// const result = useQuery([
-	//   query: {
-	//   todos(where: { is_public: { _eq: false} }, order_by: { created_at: desc }) {
-	//     id
-	//     title
-	//     created_at
-	//     is_completed
-
-	// }
-	//   }
-	// ])
+	import { useQuery, gql } from '@urql/vue'
+	import { GetMyTodosQuery, Todos } from '../generated/graphql'
 
 	const type = 'private'
 	let filterType = 'all'
 
-	const todos = [
-		{
-			id: '1',
-			title: 'This is private todo 1',
-			is_completed: true,
-			is_public: false,
-		},
-		{
-			id: '2',
-			title: 'This is private todo 2',
-			is_completed: false,
-			is_public: false,
-		},
-	]
+	const getMyTodos = gql`
+		query getMyTodos {
+			todos(
+				where: { is_public: { _eq: false } }
+				order_by: { created_at: desc }
+			) {
+				id
+				title
+				is_public
+				is_completed
+				created_at
+				user {
+					name
+				}
+			}
+		}
+	`
+	const result = useQuery<GetMyTodosQuery>({ query: getMyTodos })
+
+	const todos = result.data.value?.todos
+	console.log(result.data.value) //kjhjkh
 
 	const remainingTodos = function () {
 		const activeTodos =
@@ -45,9 +41,9 @@
 		if (filterType === 'all') {
 			return todos
 		} else if (filterType === 'active') {
-			return todos.filter((todo) => todo.is_completed !== true)
+			return todos?.filter((todo) => todo.is_completed !== true)
 		} else if (filterType === 'completed') {
-			return todos.filter((todo) => todo.is_completed === true)
+			return todos?.filter((todo) => todo.is_completed === true)
 		}
 	}
 
@@ -70,7 +66,9 @@
 
 <template>
 	<div>
-		<div class="todoListwrapper">
+		<div v-if="result.fetching.value">Loading...</div>
+		<div v-if="result.error.value">{{ result.error.value }}</div>
+		<div v-else class="todoListwrapper">
 			<TodoItem :todos="filteredTodos()" :type="type" />
 		</div>
 		<TodoFilters
