@@ -2,7 +2,7 @@
 	import TodoItem from './TodoItem.vue'
 	import TodoFilters from './TodoFilters.vue'
 	import { useQuery, gql } from '@urql/vue'
-	import { GetMyTodosQuery, Todos } from '../generated/graphql'
+	import { GetMyTodosQuery } from '../generated/graphql'
 
 	const type = 'private'
 	let filterType = 'all'
@@ -27,7 +27,6 @@
 	const result = useQuery<GetMyTodosQuery>({ query: getMyTodos })
 
 	const todos = result.data.value?.todos
-	console.log(result.data.value) //kjhjkh
 
 	const remainingTodos = function () {
 		const activeTodos =

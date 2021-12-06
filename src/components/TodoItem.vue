@@ -1,6 +1,17 @@
 <script setup lang="ts">
 	import { PropType } from 'vue'
-	import { Todos } from '../generated/graphql'
+	// import { Todos } from '../generated/graphql'
+
+	type Todos = {
+		id: number
+		title: string
+		is_public: boolean
+		is_completed: boolean
+		created_at: any
+		user: {
+			name: string
+		}
+	}
 
 	const props = defineProps({
 		type: String,
