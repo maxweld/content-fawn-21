@@ -24,7 +24,7 @@
 	}
 	const handleTodoDelete = function (todo: Todos) {
 		// eslint-disable-line
-		// delete todo from db
+		// delete a todo from db
 	}
 </script>
 

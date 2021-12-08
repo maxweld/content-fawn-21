@@ -1,11 +1,8 @@
-import gql from 'graphql-tag';
-import * as Urql from '@urql/vue';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -869,27 +866,16 @@ export type Users_Update_Column =
   /** column name */
   | 'name';
 
+export type Insert_TodosMutationVariables = Exact<{
+  title: Scalars['String'];
+  isPublic: Scalars['Boolean'];
+  user?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type Insert_TodosMutation = { __typename?: 'mutation_root', insert_todos?: { __typename?: 'todos_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'todos', id: number, title: string, is_completed: boolean, created_at: any, is_public: boolean }> } | null | undefined };
+
 export type GetMyTodosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetMyTodosQuery = { __typename?: 'query_root', todos: Array<{ __typename?: 'todos', id: number, title: string, is_public: boolean, is_completed: boolean, created_at: any, user: { __typename?: 'users', name: string } }> };
-
-
-export const GetMyTodosDocument = gql`
-    query getMyTodos {
-  todos(where: {is_public: {_eq: false}}, order_by: {created_at: desc}) {
-    id
-    title
-    is_public
-    is_completed
-    created_at
-    user {
-      name
-    }
-  }
-}
-    `;
-
-export function useGetMyTodosQuery(options: Omit<Urql.UseQueryArgs<never, GetMyTodosQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<GetMyTodosQuery>({ query: GetMyTodosDocument, ...options });
-};

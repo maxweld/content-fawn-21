@@ -8,6 +8,7 @@ specifiers:
   '@urql/vue': ^0.6.0
   '@vitejs/plugin-vue': ^1.9.3
   graphql: ^16.0.1
+  graphql-tag: ^2.12.6
   typescript: ^4.4.3
   vite: ^2.6.4
   vue: ^3.2.24
@@ -16,13 +17,14 @@ specifiers:
 dependencies:
   '@urql/vue': 0.6.0_graphql@16.0.1+vue@3.2.24
   graphql: 16.0.1
+  graphql-tag: 2.12.6_graphql@16.0.1
   vue: 3.2.24
 
 devDependencies:
   '@graphql-codegen/cli': 2.3.0_graphql@16.0.1+typescript@4.5.2
   '@graphql-codegen/typescript': 2.4.1_graphql@16.0.1
   '@graphql-codegen/typescript-operations': 2.2.1_graphql@16.0.1
-  '@graphql-codegen/typescript-vue-urql': 2.2.1_graphql@16.0.1
+  '@graphql-codegen/typescript-vue-urql': 2.2.1_54bba07b46b44ef856de5b4ed24df738
   '@vitejs/plugin-vue': 1.10.1_vite@2.6.14
   typescript: 4.5.2
   vite: 2.6.14
@@ -712,7 +714,7 @@ packages:
       - supports-color
     dev: true
 
-  /@graphql-codegen/typescript-vue-urql/2.2.1_graphql@16.0.1:
+  /@graphql-codegen/typescript-vue-urql/2.2.1_54bba07b46b44ef856de5b4ed24df738:
     resolution: {integrity: sha512-WSJ8DnYTu/qVoqtT8iLRgBOkEcLpP5T7xAovTgsw/KetjQfCIHDdiqb6ajBWdCVdt8xwEEtFTta3KVA49TV4EQ==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -723,6 +725,7 @@ packages:
       auto-bind: 4.0.0
       change-case-all: 1.0.14
       graphql: 16.0.1
+      graphql-tag: 2.12.6_graphql@16.0.1
       tslib: 2.3.1
     transitivePeerDependencies:
       - supports-color
@@ -2486,7 +2489,6 @@ packages:
     dependencies:
       graphql: 16.0.1
       tslib: 2.3.1
-    dev: true
 
   /graphql-ws/5.5.5_graphql@16.0.1:
     resolution: {integrity: sha512-hvyIS71vs4Tu/yUYHPvGXsTgo0t3arU820+lT5VjZS2go0ewp2LqyCgxEN56CzOG7Iys52eRhHBiD1gGRdiQtw==}
@@ -3976,7 +3978,6 @@ packages:
 
   /tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
-    dev: true
 
   /type-fest/0.21.3:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
