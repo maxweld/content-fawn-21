@@ -24,7 +24,7 @@
 			}
 		}
 	`
-	const result = useQuery<GetMyTodosQuery>({ query: getMyTodos })
+	const result = await useQuery<GetMyTodosQuery>({ query: getMyTodos })
 
 	const todos = result.data.value?.todos
 
@@ -58,7 +58,7 @@
 	const clearCompleted = function () {
 		const isOk = window.confirm('Are you sure?')
 		if (isOk) {
-			// Remove all the todos that are completed
+			// Remove all the todos that are complete
 		}
 	}
 </script>
